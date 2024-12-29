@@ -32,7 +32,7 @@ def main():
     sys.stdout.flush()
     try:
         # Download the XML file
-        response = requests.get('https://www.bevy.be/bevyfiles/palestine1.xml', verify=False)
+        response = requests.get('https://www.open-epg.com/files/palestine1.xml', verify=False)
         if response.status_code == 200:
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(response.text)
