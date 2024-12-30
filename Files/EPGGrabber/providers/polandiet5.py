@@ -26,9 +26,9 @@ input_path = os.path.join(EPG_ROOT, 'Poland.xml')
 output_path = os.path.join(EPG_ROOT, 'out.xml')
 
 def main():
-    print("*****************Poland_iet5_EN EPG******************")
+    print("*****************Poland_iet5 EPG******************")
     sys.stdout.flush()
-    print("Downloading Poland_iet5_EN EPG guide\nPlease wait....")
+    print("Downloading Poland_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file
