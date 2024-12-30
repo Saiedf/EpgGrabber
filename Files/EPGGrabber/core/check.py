@@ -57,6 +57,20 @@ if not os.path.exists('/etc/epgimport/ziko_config/uae1iet5.channels.xml'):
     with io.open('/etc/epgimport/ziko_config/uae1iet5.channels.xml', 'w', encoding="utf-8") as f:
         f.write(uae1iet5_channels.text)
 
+if not os.path.exists('/etc/epgimport/ziko_config/polandiet5.channels.xml'):
+    print('Downloading polandiet5 channels config')
+    sys.stdout.flush()
+    polandiet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/polandiet5.channels.xml?raw=true')
+    with io.open('/etc/epgimport/ziko_config/polandiet5.channels.xml', 'w', encoding="utf-8") as f:
+        f.write(polandiet5_channels.text)
+
+if not os.path.exists('/etc/epgimport/ziko_config/polandpremiumiet5.channels.xml'):
+    print('Downloading polandpremiumiet5 channels config')
+    sys.stdout.flush()
+    polandpremiumiet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/polandpremiumiet5.channels.xml?raw=true')
+    with io.open('/etc/epgimport/ziko_config/polandpremiumiet5.channels.xml', 'w', encoding="utf-8") as f:
+        f.write(polandpremiumiet5_channels.text)
+
 if not os.path.exists('/etc/epgimport/ziko_config/elcinema.channels.xml'):
     print('Downloading elcinema channels config')
     sys.stdout.flush()
