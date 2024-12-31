@@ -26,9 +26,9 @@ input_path = os.path.join(EPG_ROOT, 'qatar3.xml')
 output_path = os.path.join(EPG_ROOT, 'out.xml')
 
 def main():
-    print("*****************Sport_iet5_EN EPG******************")
+    print("*****************Qatar_iet5_EN EPG******************")
     sys.stdout.flush()
-    print("Downloading Sport_iet5_EN EPG guide\nPlease wait....")
+    print("Downloading Qatar_iet5_EN EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file
@@ -92,7 +92,7 @@ def rename_file():
     print("qatar3.xml file is created - successfully done")
     print("############################################################")
     print("The time is set to +0200 ,and if your time is different,")
-    print("you can modify the Sporteniet5.py file at the following path:")
+    print("you can modify the Qatareniet5.py file at the following path:")
     print("/usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/")
     print("############################################################")
 
@@ -100,7 +100,7 @@ def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
         for channel in data['bouquets']:
-            if channel["bouquet"] == "Sporteniet5":
+            if channel["bouquet"] == "Qatareniet5":
                 channel['date'] = datetime.today().strftime('%A %d %B %Y at %I:%M %p')
     with open(PROVIDERS_ROOT, 'w') as f:
         json.dump(data, f, indent=4)
