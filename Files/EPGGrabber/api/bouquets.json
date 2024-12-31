@@ -2193,8 +2193,8 @@
                 "NEW beIN-SPORTS-MAX-05.ar",
                 "NEWS DIGITAL.ar"
             ], 
-            "path": "/etc/epgimport/ziko_config/sportiet5.channels.xml", 
-            "name": "Sportar_iet5"
+            "path": "/etc/epgimport/ziko_config/qatarariet5.channels.xml", 
+            "name": "Qatarar_iet5"
         }, 
         {
             "channels": [
@@ -2242,7 +2242,7 @@
                 "NEWS DIGITAL.ar"
             ], 
             "path": "/etc/epgimport/ziko_config/qatareniet5.channels.xml", 
-            "name": "qataren_iet5"
+            "name": "Qataren_iet5"
         }, 
         {
             "channels": [
