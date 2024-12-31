@@ -16,17 +16,17 @@
         <description>bein entertainment connect</description>
         <url>/etc/epgimport/ziko_epg/beinentC.xml</url>
     </source>
-	 <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/beinsportiet5.channels.xml">
-        <description>Bein_Sport_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/qatarpremium.xml</url>
+    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/qatarariet5.channels.xml">
+        <description>Qatar_ar_iet5 by (iet5 )</description>
+        <url>/etc/epgimport/ziko_epg/qatar2.xml</url>
     </source>
-    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/sportiet5.channels.xml">
-        <description>Sport_iet5 by ( iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/arabiapremiumar.xml</url>
-   </source>
 	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/qatareniet5.channels.xml">
         <description>Qataren_iet5 by (iet5 )</description>
         <url>/etc/epgimport/ziko_epg/qatar3.xml</url>
+    </source>
+	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/qatarprit5.channels.xml">
+        <description>Qatar_pri_iet5 by (iet5 )</description>
+        <url>/etc/epgimport/ziko_epg/qatarpremium.xml</url>
     </source>
 	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/egypt2iet5.channels.xml">
         <description>Egypt2_iet5 by (iet5 )</description>
