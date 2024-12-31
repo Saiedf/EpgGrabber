@@ -13,7 +13,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import fileinput
 
 # Ignore insecure request warnings
-warnings.simplefilter('ignore', InsecureRequestWarning)
+warnings.filterwarnings('ignore', category=InsecureRequestWarning)
 
 # Constants
 try:
@@ -22,33 +22,19 @@ except ImportError:
     from __init__ import EPG_ROOT, PROVIDERS_ROOT
 
 # Paths
-path = os.path.join(EPG_ROOT, 'qatar2.xml')
-path_1 = os.path.join(EPG_ROOT, 'out.xml')
+input_path = os.path.join(EPG_ROOT, 'qatar2.xml')
+output_path = os.path.join(EPG_ROOT, 'out.xml')
 
-# List of changes to be made
-List_Chang = [
-    ('<channel', '  <channel'),
-    ('<display-name>', '\n    <display-name lang="ar">'),
-    ('<url>', '\n    <url>'),
-    ('</channel>', '\n  </channel>'),
-    ('<programme', '  <programme'),
-    ('<title', '\n    <title'),
-    ('<desc', '\n    <desc'),
-    ('</programme>', '\n  </programme>'),
-    ('<icon', '\n    <icon'),
-    ('<category', '\n    <category')
-]
 def main():
     print("*****************Qatar_iet5_AR EPG******************")
     sys.stdout.flush()
     print("Downloading Qatar_iet5_AR EPG guide\nPlease wait....")
     sys.stdout.flush()
-
     try:
         # Download the XML file
         response = requests.get('https://www.open-epg.com/files/qatar2.xml', verify=False)
         if response.status_code == 200:
-            with io.open(path, 'w', encoding="utf-8") as f:
+            with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(response.text)
             print("##########################################")
             print("qatar2.xml Downloaded Successfully")
@@ -60,16 +46,10 @@ def main():
             remove_duplicates()
             # Rename the file
             rename_file()
-
             # Update providers JSON
             update_providers()
-
             # Remove specific lines
             remove_specific_lines()
-
-            # Apply changes to the XML file
-            apply_changes()
-
             print('**************FINISHED******************')
             sys.stdout.flush()
         else:
@@ -78,7 +58,7 @@ def main():
         print("Failed to download /qatar2.xml: {}".format(e))
 
 def adjust_times():
-    with io.open(path, 'r', encoding="utf-8") as f:
+    with io.open(input_path, 'r', encoding="utf-8") as f:
         xml_data = f.read()
 
     def adjust_start_time(match):
@@ -95,26 +75,25 @@ def adjust_times():
     xml_data = re.sub(r'start="(\d{14}) \+0000"', adjust_start_time, xml_data)
     xml_data = re.sub(r'stop="(\d{14}) \+0000"', adjust_stop_time, xml_data)
 
-    with io.open(path, 'w', encoding="utf-8") as f:
+    with io.open(input_path, 'w', encoding="utf-8") as f:
         f.write(xml_data)
 
 def remove_duplicates():
     lines_seen = set()
-    with open(path_1, 'w') as output_file:
-        for each_line in open(path, 'r'):
-            if each_line not in lines_seen:
-                output_file.write(each_line)
-                lines_seen.add(each_line)
+    with open(output_path, 'w') as output_file:
+        for line in open(input_path, 'r'):
+            if line not in lines_seen:
+                output_file.write(line)
+                lines_seen.add(line)
 
 def rename_file():
-    os.remove(path)
-    os.rename(path_1, path)
-    print("Cool .... congratulations your qatar2.xml file is created - successfully done")
+    os.remove(input_path)
+    os.rename(output_path, input_path)
+    print("qatar2.xml file is created - successfully done")
     print("############################################################")
-    print("The time is set to +0200, and if your time is different,")
-    print("you can modify the Qatarariet5.py file in the following")
-    print("path /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/")
-    print("providers/")
+    print("The time is set to +0200 ,and if your time is different,")
+    print("you can modify the Qatarariet5.py file at the following path:")
+    print("/usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/")
     print("############################################################")
 
 def update_providers():
@@ -128,22 +107,22 @@ def update_providers():
 
 # Remove lines containing specified data and empty lines
 def remove_specific_lines():
-    with open(path, 'r') as f:
+    with open(input_path, 'r') as f:
         lines = f.readlines()
-    with open(path, 'w') as f:
+    with open(input_path, 'w') as f:
         for line in lines:
             if '<icon src="https://' not in line and '<url>https://' not in line and '<category' not in line and line.strip():
                 f.write(line)
 
-def ChangeDataList(Mege, Megerep, fil):
-    for line in fileinput.input(fil, inplace=True):
-        if Mege in line:
-            line = line.replace(Mege, Megerep)
+def change_data_list(old_text, new_text, file_path):
+    for line in fileinput.input(file_path, inplace=True):
+        if old_text in line:
+            line = line.replace(old_text, new_text)
         sys.stdout.write(line)
 
-def apply_changes():
-    for Exprt in List_Chang:
-        ChangeDataList(Exprt[0], Exprt[1], path)
+def change(list_changes):
+    for change_expr in list_changes:
+        change_data_list(change_expr[0], change_expr[1], input_path)
 
 if __name__ == "__main__":
     main()
