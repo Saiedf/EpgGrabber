@@ -41,7 +41,7 @@ List_Chang = [
 def main():
     print("*****************Qatar_iet5_AR EPG******************")
     sys.stdout.flush()
-    print("Downloading Qatar_iet5_EN EPG guide\nPlease wait....")
+    print("Downloading Qatar_iet5_AR EPG guide\nPlease wait....")
     sys.stdout.flush()
 
     try:
