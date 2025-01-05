@@ -10,9 +10,9 @@ import schedule
 import time
 
 # GitHub configuration
-GITHUB_TOKEN = "ghp_التوكن الخاص بك"
-GITHUB_REPO = "user/directory"
-GITHUB_FILE_PATH = "uaepremium1.xml"
+GITHUB_TOKEN = "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"
+GITHUB_REPO = repo_name = "Saiedf/EpgGrabber"  # GitHub repository name
+GITHUB_FILE_PATH = "Files/download/uaepremium1.xml"  # File path.
 
 def download_and_upload_file():
     try:
@@ -84,7 +84,7 @@ def download_and_upload_file():
         print(f"An error occurred: {e}")
 
 # Schedule the task
-schedule.every().day.at("17:17").do(download_and_upload_file)  # حدد الوقت هنا 
+schedule.every().day.at("18:55").do(download_and_upload_file)  # حدد الوقت هنا 
 
 print("Scheduler is running. Waiting for the specified time...")
 while True:
