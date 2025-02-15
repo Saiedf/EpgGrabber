@@ -36,6 +36,10 @@
         <description>Qatar4_iet5 by (iet5)</description>
         <url>/etc/epgimport/ziko_epg/Qatar4.xml</url>
     </source>
+	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/Qatar5iet5.channels.xml">
+        <description>Qatar5_iet5 by (iet5)</description>
+        <url>/etc/epgimport/ziko_epg/qatar5.xml</url>
+    </source>
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia1iet5.channels.xml">
         <description>saudiarabia1_iet5 by (iet5 )</description>
         <url>/etc/epgimport/ziko_epg/saudiarabia1.xml</url>		
@@ -72,9 +76,9 @@
         <description>UAE4_iet5 by (iet5)</description>
         <url>/etc/epgimport/ziko_epg/uae4.xml</url>
    </source>
-   <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/polandiet5.channels.xml">
-        <description>POLAND_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/poland.xml</url>
+   <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/poland1iet5.channels.xml">
+        <description>POLAND1_iet5 by (iet5 )</description>
+        <url>/etc/epgimport/ziko_epg/poland1.xml</url>
     </source>
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/poland2iet5.channels.xml">
         <description>POLAND2_iet5 by (iet5 )</description>
