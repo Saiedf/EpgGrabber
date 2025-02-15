@@ -56,10 +56,6 @@
         <description>saudiarabia4_iet5 by (iet5 )</description>
         <url>/etc/epgimport/ziko_epg/saudiarabia4.xml</url>		
     </source>	
-   <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia5iet5.channels.xml">
-        <description>saudiarabia5_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/saudiarabia5.xml</url>		
-    </source>
 	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/uae1iet5.channels.xml">
         <description>UAE1_iet5 by (iet5)</description>
         <url>/etc/epgimport/ziko_epg/uae1.xml</url>
