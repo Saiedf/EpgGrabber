@@ -41,20 +41,20 @@
         <url>/etc/epgimport/ziko_epg/qatar5.xml</url>
     </source>
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia1iet5.channels.xml">
-        <description>saudiarabia1_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/Saudiarabia1.xlsx</url>		
+        <description>Saudiarabia1_iet5 by (iet5 )</description>
+        <url>/etc/epgimport/ziko_epg/Saudiarabia1.xml</url>		
     </source>
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia2iet5.channels.xml">
-        <description>saudiarabia2_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/Saudiarabia2.xlsx</url>		
+        <description>Saudiarabia2_iet5 by (iet5 )</description>
+        <url>/etc/epgimport/ziko_epg/saudiarabia2.xml</url>		
     </source>	
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia3iet5.channels.xml">
-        <description>saudiarabia3_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/saudiarabia3.xlsx</url>		
+        <description>Saudiarabia3_iet5 by (iet5 )</description>
+        <url>/etc/epgimport/ziko_epg/saudiarabia3.xml</url>		
     </source>
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia4iet5.channels.xml">
-        <description>saudiarabia4_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/saudiarabia4.xlsx</url>		
+        <description>Saudiarabia4_iet5 by (iet5 )</description>
+        <url>/etc/epgimport/ziko_epg/saudiarabia4.xml</url>		
     </source>	
 	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/uae1iet5.channels.xml">
         <description>UAE1_iet5 by (iet5)</description>
