@@ -70,33 +70,33 @@ if not os.path.exists('/etc/epgimport/ziko_config/uae4iet5.channels.xml'):
     with io.open('/etc/epgimport/ziko_config/uae4iet5.channels.xml', 'w', encoding="utf-8") as f:
         f.write(uae4iet5_channels.text)
 
-if not os.path.exists('/etc/epgimport/ziko_config/Saudiarabia1iet5.channels.xml'):
-    print('Downloading Saudiarabia1iet5 channels config')
+if not os.path.exists('/etc/epgimport/ziko_config/saudiarabia1iet5.channels.xml'):
+    print('Downloading saudiarabia1iet5 channels config')
     sys.stdout.flush()
-    Saudiarabia1iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/Saudiarabia1iet5.channels.xml?raw=true')
-    with io.open('/etc/epgimport/ziko_config/Saudiarabia1iet5.channels.xml', 'w', encoding="utf-8") as f:
-        f.write(Saudiarabia1iet5_channels.text)
+    saudiarabia1iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/saudiarabia1iet5.channels.xml?raw=true')
+    with io.open('/etc/epgimport/ziko_config/saudiarabia1iet5.channels.xml', 'w', encoding="utf-8") as f:
+        f.write(saudiarabia1iet5_channels.text)
 
-if not os.path.exists('/etc/epgimport/ziko_config/Saudiarabia2iet5.channels.xml'):
-    print('Downloading Saudiarabia2iet5 channels config')
+if not os.path.exists('/etc/epgimport/ziko_config/saudiarabia2iet5.channels.xml'):
+    print('Downloading saudiarabia2iet5 channels config')
     sys.stdout.flush()
-    Saudiarabia2iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/Saudiarabia2iet5.channels.xml?raw=true')
-    with io.open('/etc/epgimport/ziko_config/Saudiarabia2iet5.channels.xml', 'w', encoding="utf-8") as f:
-        f.write(Saudiarabia2iet5_channels.text)        
+    saudiarabia2iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/saudiarabia2iet5.channels.xml?raw=true')
+    with io.open('/etc/epgimport/ziko_config/saudiarabia2iet5.channels.xml', 'w', encoding="utf-8") as f:
+        f.write(saudiarabia2iet5_channels.text)        
         
-if not os.path.exists('/etc/epgimport/ziko_config/Saudiarabia3iet5.channels.xml'):
-    print('Downloading Saudiarabia3iet5 channels config')
+if not os.path.exists('/etc/epgimport/ziko_config/saudiarabia3iet5.channels.xml'):
+    print('Downloading saudiarabia3iet5 channels config')
     sys.stdout.flush()
-    Saudiarabia3iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/Saudiarabia3iet5.channels.xml?raw=true')
-    with io.open('/etc/epgimport/ziko_config/Saudiarabia3iet5.channels.xml', 'w', encoding="utf-8") as f:
-        f.write(Saudiarabia3iet5_channels.text)
+    saudiarabia3iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/saudiarabia3iet5.channels.xml?raw=true')
+    with io.open('/etc/epgimport/ziko_config/saudiarabia3iet5.channels.xml', 'w', encoding="utf-8") as f:
+        f.write(saudiarabia3iet5_channels.text)
 
-if not os.path.exists('/etc/epgimport/ziko_config/Saudiarabia4iet5.channels.xml'):
-    print('Downloading Saudiarabia4iet5 channels config')
+if not os.path.exists('/etc/epgimport/ziko_config/saudiarabia4iet5.channels.xml'):
+    print('Downloading saudiarabia4iet5 channels config')
     sys.stdout.flush()
-    Saudiarabia4iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/Saudiarabia4iet5.channels.xml?raw=true')
-    with io.open('/etc/epgimport/ziko_config/Saudiarabia4iet5.channels.xml', 'w', encoding="utf-8") as f:
-        f.write(Saudiarabia4iet5_channels.text)
+    saudiarabia4iet5_channels = requests.get('https://github.com/ziko-ZR1/Epg-plugin/blob/master/configs/saudiarabia4iet5.channels.xml?raw=true')
+    with io.open('/etc/epgimport/ziko_config/saudiarabia4iet5.channels.xml', 'w', encoding="utf-8") as f:
+        f.write(saudiarabia4iet5_channels.text)
 
 if not os.path.exists('/etc/epgimport/ziko_config/qatar1iet5.channels.xml'):
     print('Downloading qatar1iet5 channels config')
