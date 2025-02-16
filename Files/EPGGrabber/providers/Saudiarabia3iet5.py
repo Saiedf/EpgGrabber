@@ -31,7 +31,7 @@ List_Chang = [
     # Add your specific changes here
 ]
 def main():
-    print("*****************saudiarabia3_iet5 EPG******************")
+    print("*****************Saudiarabia3_iet5 EPG******************")
     sys.stdout.flush()
     print("Downloading Saudiarabia3_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()

@@ -22,7 +22,7 @@ except ImportError:
     from __init__ import EPG_ROOT, PROVIDERS_ROOT
 
 # Paths
-input_path = os.path.join(EPG_ROOT, 'Saudiarabia1.xml')
+input_path = os.path.join(EPG_ROOT, 'saudiarabia1.xml')
 output_path = os.path.join(EPG_ROOT, 'out.xml')
 
 # List of changes to apply
@@ -31,9 +31,9 @@ List_Chang = [
     # Add your specific changes here
 ]
 def main():
-    print("*****************saudiarabia1_iet5 EPG******************")
+    print("*****************Saudiarabia1_iet5 EPG******************")
     sys.stdout.flush()
-    print("Downloading saudiarabia1_iet5 EPG guide\nPlease wait....")
+    print("Downloading Saudiarabia1_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file

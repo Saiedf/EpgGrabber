@@ -31,9 +31,9 @@ List_Chang = [
     # Add your specific changes here
 ]
 def main():
-    print("*****************saudiarabia4_iet5 EPG******************")
+    print("*****************Saudiarabia4_iet5 EPG******************")
     sys.stdout.flush()
-    print("Downloading saudiarabia1_iet5 EPG guide\nPlease wait....")
+    print("Downloading Saudiarabia1_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file
@@ -42,7 +42,7 @@ def main():
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(response.text)
             print("##########################################")
-            print("saudiarabia4.xml Downloaded Successfully")
+            print("Saudiarabia4.xml Downloaded Successfully")
             print("##########################################")
 
             # Apply the transformations
