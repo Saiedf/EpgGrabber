@@ -33,7 +33,7 @@ List_Chang = [
 def main():
     print("*****************saudiarabia3_iet5 EPG******************")
     sys.stdout.flush()
-    print("Downloading saudiarabia1_iet5 EPG guide\nPlease wait....")
+    print("Downloading Saudiarabia3_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file
@@ -42,7 +42,7 @@ def main():
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(response.text)
             print("##########################################")
-            print("saudiarabia3.xml Downloaded Successfully")
+            print("ٍSaudiarabia3.xml Downloaded Successfully")
             print("##########################################")
 
             # Apply the transformations
