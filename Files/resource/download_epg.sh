@@ -40,20 +40,20 @@ sleep 2
 wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/qatar5iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/qatar5iet5.py
 sleep 2
 
-# Download Saudiarabia1iet5.py
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia1iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia1iet5.py
+# Download saudiarabia1iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia1iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia1iet5.py
 sleep 2
 
-# Download Saudiarabia2iet5.py
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia2iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia2iet5.py
+# Download saudiarabia2iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia2iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia2iet5.py
 sleep 2
 
-# Download Saudiarabia3iet5.py
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia3iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia3iet5.py
+# Download saudiarabia3iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia3iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia3iet5.py
 sleep 2
 
-# Download Saudiarabia4iet5.py
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia4iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia4iet5.py
+# Download saudiarabia4iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia4iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia4iet5.py
 sleep 2
 
 # Download uae1iet5.py
@@ -104,20 +104,20 @@ sleep 2
 wget -O /etc/epgimport/ziko_config/qatar5iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/qatar5iet5.channels.xml
 sleep 2
 
-# Download Saudiarabia1iet5.channels.xml
-wget -O /etc/epgimport/ziko_config/Saudiarabia1iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia1iet5.channels.xml
+# Download saudiarabia1iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia1iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia1iet5.channels.xml
 sleep 2
 
-# Download Saudiarabia2iet5.channels.xml
-wget -O /etc/epgimport/ziko_config/Saudiarabia2iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia2iet5.channels.xml
+# Download saudiarabia2iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia2iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia2iet5.channels.xml
 sleep 2
 
-# Download Saudiarabia3iet5.channels.xml
-wget -O /etc/epgimport/ziko_config/Saudiarabia3iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia3iet5.channels.xml
+# Download saudiarabia3iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia3iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia3iet5.channels.xml
 sleep 2
 
-# Download Saudiarabia4iet5.channels.xml
-wget -O /etc/epgimport/ziko_config/Saudiarabia4iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia4iet5.channels.xml
+# Download saudiarabia4iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia4iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia4iet5.channels.xml
 sleep 2
 
 # Download uae1iet5.channels.xml
