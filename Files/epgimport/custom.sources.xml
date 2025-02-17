@@ -42,7 +42,7 @@
     </source>
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia1iet5.channels.xml">
         <description>Saudiarabia1_iet5 by (iet5 )</description>
-        <url>/etc/epgimport/ziko_epg/Saudiarabia1.xml</url>		
+        <url>/etc/epgimport/ziko_epg/saudiarabia1.xml</url>		
     </source>
    <source type="gen_xmltv" channels="/etc/epgimport/ziko_config/saudiarabia2iet5.channels.xml">
         <description>Saudiarabia2_iet5 by (iet5 )</description>
