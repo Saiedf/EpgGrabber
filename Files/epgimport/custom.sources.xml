@@ -34,7 +34,7 @@
     </source>
 	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/qatar4iet5.channels.xml">
         <description>Qatar4_iet5 by (iet5)</description>
-        <url>/etc/epgimport/ziko_epg/Qatar4.xml</url>
+        <url>/etc/epgimport/ziko_epg/qatar4.xml</url>
     </source>
 	<source type="gen_xmltv" channels="/etc/epgimport/ziko_config/qatar5iet5.channels.xml">
         <description>Qatar5_iet5 by (iet5)</description>
