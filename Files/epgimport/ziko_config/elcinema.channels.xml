@@ -404,4 +404,14 @@
 	<channel id="ONE">1:0:19:16:1:2BE:1040000:0:0:0:</channel>
 	<channel id="Syria_TV">1:0:1:B0B:1C:800:DCA0000:0:0:0:</channel>
 	<channel id="Star_Movies">1:0:19:9D0B:FB4:E0:1040000:0:0:0:</channel>
+	<channel id="MBC_MASR_DRAMA_HD">1:0:19:133:17F8:2BE:1040000:0:0:0:</channel>
+	<channel id="MBC_Iraq">1:0:1:6B:D28C:77E:DCA0000:0:0:0:</channel>
+	<channel id="MBC_Iraq">1:0:19:69:D28C:77E:DCA0000:0:0:0:</channel>
+	<channel id="MBC_MASR">1:0:1:51A:D:800:DCA0000:0:0:0:</channel>
+	<channel id="MBC_MASR2">1:0:1:6C:D28C:77E:DCA0000:0:0:0:</channel>
+	<channel id="MBC_MASR2">1:0:19:19CA:42:800:DCA0000:0:0:0:</channel>
+	<channel id="MBC_MASR2">1:0:19:66:D28C:77E:DCA0000:0:0:0:</channel>
+	<channel id="MBC_MASR_DRAMA_HD">1:0:19:67:D28C:77E:DCA0000:0:0:0:</channel>
+	<channel id="MBC_MASR">1:0:1:14:3B:800:DCA0000:0:0:0:</channel>
+	<channel id="MBC_MASR">1:0:19:65:D28C:77E:DCA0000:0:0:0:</channel>
 </channels>
