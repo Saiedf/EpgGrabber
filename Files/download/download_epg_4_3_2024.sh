@@ -32,16 +32,16 @@ sleep 1
 wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/qatar5iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/qatar5iet5.py
 sleep 1
 
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia1iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia1iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia1iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia1iet5.py
 sleep 1
 
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia2iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia2iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia2iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia2iet5.py
 sleep 1
 
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia3iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia3iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia3iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia3iet5.py
 sleep 1
 
-wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/Saudiarabia4iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/Saudiarabia4iet5.py
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/saudiarabia4iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/saudiarabia4iet5.py
 sleep 1
 
 wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/uae1iet5.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/uae1iet5.py
@@ -86,16 +86,16 @@ sleep 1
 wget -O /etc/epgimport/ziko_config/qatar5iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/qatar5iet5.channels.xml
 sleep 1
 
-wget -O /etc/epgimport/ziko_config/Saudiarabia1iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia1iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia1iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia1iet5.channels.xml
 sleep 1
 
-wget -O /etc/epgimport/ziko_config/Saudiarabia2iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia2iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia2iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia2iet5.channels.xml
 sleep 1
 
-wget -O /etc/epgimport/ziko_config/Saudiarabia3iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia3iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia3iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia3iet5.channels.xml
 sleep 1
 
-wget -O /etc/epgimport/ziko_config/Saudiarabia4iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/Saudiarabia4iet5.channels.xml
+wget -O /etc/epgimport/ziko_config/saudiarabia4iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/saudiarabia4iet5.channels.xml
 sleep 1
 
 wget -O /etc/epgimport/ziko_config/uae1iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/uae1iet5.channels.xml
