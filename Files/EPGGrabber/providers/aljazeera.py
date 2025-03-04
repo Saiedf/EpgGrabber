@@ -94,6 +94,7 @@ def to_xml(data, filename, channel_name, target_date):
     else:
         print("No data found for {} on {}".format(channel_name, target_date))
         sys.stdout.flush()
+
 # دالة لجلب الجدول الزمني للقناة
 def fetch_schedule(url, filename, channel_name):
     try:
@@ -178,6 +179,7 @@ def fetch_schedule(url, filename, channel_name):
         print("Connection error ({}): {}".format(channel_name, str(e)))
 
 def main():
+    # Existing code for EPG download
     xml_header(EPG_ROOT + '/aljazeera.xml', ['aljazeera', 'aljazeera_doc'])
     fetch_schedule('https://www.ajnet.me/schedule/', EPG_ROOT + '/aljazeera.xml', 'aljazeera')
     fetch_schedule('https://doc.aljazeera.net/schedule', EPG_ROOT + '/aljazeera.xml', 'aljazeera_doc')
@@ -189,7 +191,10 @@ def main():
             channel['date'] = datetime.today().strftime('%A %d %B %Y at %I:%M %p')
     with open(PROVIDERS_ROOT, 'w') as f:
         json.dump(data, f)
-    print("**************FINISHED******************")
-    sys.stdout.flush()
+
+
 if __name__ == "__main__":
     main()
+
+    print("**************FINISHED******************")
+    sys.stdout.flush()

@@ -192,9 +192,9 @@ def main():
                 cprint('No epg found or missing data for: ' + nb.split('-')[1])
                 sys.stdout.flush()
                 continue
-    print('**************FINISHED******************')
-    sys.stdout.flush()
 
 if __name__ == '__main__':
     main()
-    close_xml(os.path.join("/etc/epgimport/ziko_epg", "elcinema.xml"))
+
+    print('**************FINISHED******************')
+    sys.stdout.flush()

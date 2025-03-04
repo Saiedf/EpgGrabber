@@ -122,9 +122,9 @@ def main():
         update_status(provider)
         close_xml(EPG_ROOT + '/elcinema.xml')
 
-    print('**************FINISHED******************')
-    sys.stdout.flush()
-
 # Entry point for the script
 if __name__ == '__main__':
     main()
+
+    print('**************FINISHED******************')
+    sys.stdout.flush()    

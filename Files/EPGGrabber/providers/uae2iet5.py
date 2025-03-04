@@ -41,9 +41,9 @@ def main():
         if response.status_code == 200:
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(response.text)
-            print("##########################################")
+            print("########################################")
             print("UAE2.xml Downloaded Successfully")
-            print("##########################################")
+            print("########################################")
 
             # Apply the transformations
             apply_changes()
@@ -57,7 +57,7 @@ def main():
             update_providers()
             # Remove specific lines
             remove_specific_lines()
-            print('**************FINISHED******************')
+            print('*************FINISHED******************')
             sys.stdout.flush()
         else:
             print("Failed to download /uae2.xml. Status code: {}".format(response.status_code))
@@ -104,11 +104,9 @@ def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
     print("uae2.xml file successfully created")
-    print("############################################################")
-    print("The time is set to +0200 ,and if your time is different,")
-    print("you can modify the uae2iet5.py file at the following path:")
-    print("/usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/")
-    print("############################################################")
+   print("##########################################")
+   print(        "The time is set to +0200 "         )
+   print("##########################################")
 
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
@@ -140,3 +138,5 @@ def change(list_changes):
 
 if __name__ == "__main__":
     main()
+    
+sys.stdout.flush()

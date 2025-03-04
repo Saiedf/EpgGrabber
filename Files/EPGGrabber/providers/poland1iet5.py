@@ -30,6 +30,7 @@ List_Chang = [
     # Example: ('old_text', 'new_text'),
     # Add your specific changes here
 ]
+
 def main():
     print("*****************Poland1_iet5 EPG******************")
     sys.stdout.flush()
@@ -104,17 +105,15 @@ def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
     print("poland1.xml file successfully created")
-    print("############################################################")
-    print("The time is set to +0200 ,and if your time is different,")
-    print("you can modify the Poland1iet5.py file at the following path:")
-    print("/usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/")
-    print("############################################################")
+    print("######################################################")
+    print(            "The time is set to +0200"                  )
+    print("######################################################")
 
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
         for channel in data['bouquets']:
-            if channel["bouquet"] == "Poland1iet5":
+            if channel["bouquet"] == "poland1iet5":
                 channel['date'] = datetime.today().strftime('%A %d %B %Y at %I:%M %p')
     with open(PROVIDERS_ROOT, 'w') as f:
         json.dump(data, f, indent=4)
@@ -138,5 +137,7 @@ def change(list_changes):
     for change_expr in list_changes:
         change_data_list(change_expr[0], change_expr[1], input_path)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
+
+    sys.stdout.flush()
