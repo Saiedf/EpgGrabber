@@ -68,6 +68,9 @@ sleep 1
 wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/rotana.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/rotana.py
 sleep 1
 
+wget -O /usr/lib/enigma2/python/Plugins/Extensions/EPGGrabber/providers/elcin.py https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/EPGGrabber/providers/elcin.py
+sleep 1
+
 wget -O /etc/epgimport/ziko_config/egypt2iet5.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/egypt2iet5.channels.xml
 sleep 1
 
@@ -120,6 +123,9 @@ wget -O /etc/epgimport/ziko_config/aljazeera.channels.xml https://raw.githubuser
 sleep 1
 
 wget -O /etc/epgimport/ziko_config/rotana.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/rotana.channels.xml
+sleep 1
+
+wget -O /etc/epgimport/ziko_config/elcinema.channels.xml https://raw.githubusercontent.com/Saiedf/EpgGrabber/refs/heads/main/Files/epgimport/ziko_config/elcinema.channels.xml
 sleep 1
 
 echo "All files have been downloaded successfully!"
