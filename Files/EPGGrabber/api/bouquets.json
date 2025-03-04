@@ -237,8 +237,8 @@
                 "AlMasriyah", 
                 "Aloula_Egy_Ch", 
                 "Alrasheed", 
-                "AlSaeedah",
-				"AlSaudiya",
+                "AlSaeedah", 
+                "AlSaudiya", 
                 "Alsumaria", 
                 "Amman", 
                 "ATTESSIA", 
@@ -253,8 +253,8 @@
                 "Bein_Movies_Premiere_1", 
                 "Bein_Series_1", 
                 "Bein_Series_2", 
-                "Beurtv",
-                "CartoonNetworkArabic",				
+                "Beurtv", 
+                "CartoonNetworkArabic",
                 "CBC", 
                 "CBC_Drama", 
                 "CBC_sofra", 
@@ -268,8 +268,8 @@
                 "DubaiOne", 
                 "EchoroukTV", 
                 "Egyptian_TV",
-				"EchoroukTV",
-				"ElMehwarChannel",
+                "EchoroukTV",
+                "ElMehwarChannel",
                 "Emirates", 
                 "ETC_TV ", 
                 "Fox_TV", 
@@ -3044,7 +3044,7 @@
                 "YAS Sports Channel.ua"
             ], 
             "path": "/etc/epgimport/ziko_config/uae1iet5.channels.xml", 
-            "name": "Uae1_iet5"		
+            "name": "Uae1_iet5"
         }, 
         {
             "channels": [
@@ -4055,16 +4055,17 @@
         }, 
         {
             "channels": [
-                "Rotana Cinema SA",
-                "Rotana Cinema EG",
+                "Rotana Cinema KSA",
+                "Rotana Cinema Masr",
                 "Rotana Comedy",
                 "Rotana Drama",
                 "Rotana Classic",
-                "Rotana Khalijia",
+                "Rotana Khalijea HD",
+                "Rotana Clip",
                 "LBC",
-                "Alrisala"
+                "Al Resalah"
             ], 
-            "path": "/etc/epgimport/ziko_config/custom.channels.xml", 
+            "path": "/etc/epgimport/ziko_config/rotana.channels.xml", 
             "name": "Rotana"
         }, 
         {
