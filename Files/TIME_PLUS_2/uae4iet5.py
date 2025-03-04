@@ -104,9 +104,9 @@ def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
     print("UAE4.xml file successfully created")
-   print("##########################################")
-   print(        "The time is set to +0200 "         )
-   print("##########################################")
+    print("######################################################")
+    print(            "The time is set to +0200"                  )
+    print("######################################################")
 
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
