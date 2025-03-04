@@ -106,7 +106,7 @@ def rename_file():
     print("saudiarabia4.xml file successfully created")
     print("######################################################")
     print(            "The time is set to +0200"                  )
-    print("######################################################"))
+    print("######################################################")
 
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
