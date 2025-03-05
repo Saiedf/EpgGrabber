@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" ?>
 <channels>
 	<channel id="Rotana Cinema KSA">1:0:19:5141:820:E0:1040000:0:0:0:</channel>
 	<channel id="Rotana Cinema KSA">1:0:1:83B:15:800:DCA0000:0:0:0:</channel>
@@ -10,4 +10,6 @@
 	<channel id="Rotana Khalijea HD">1:0:1:837:15:800:DCA0000:0:0:0:</channel>
 	<channel id="Rotana Classic">1:0:1:838:15:800:DCA0000:0:0:0:</channel>
 	<channel id="Rotana Classic">1:0:19:5143:820:E0:1040000:0:0:0:</channel>
+	<channel id="Rotana Cinema KSA">1:0:1:836:15:800:DCA0000:0:0:0:</channel>
+	<channel id="Rotana Clip">1:0:1:836:15:800:DCA0000:0:0:0:</channel>
 </channels>
