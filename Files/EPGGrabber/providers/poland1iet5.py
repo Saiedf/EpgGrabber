@@ -30,9 +30,8 @@ List_Chang = [
     # Example: ('old_text', 'new_text'),
     # Add your specific changes here
 ]
-
 def main():
-    print("*****************Poland1_iet5 EPG******************")
+    print("************Poland1_iet5_EPG***************")
     sys.stdout.flush()
     print("Downloading Poland1_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
@@ -40,12 +39,13 @@ def main():
         # Download the XML file
         response = requests.get('https://www.open-epg.com/files/poland1.xml', verify=False)
         if response.status_code == 200:
+            # Convert content to unicode using utf-8 encoding
+            data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(response.text)
-            print("##########################################")
+            print("########################################")
             print("poland1.xml Downloaded Successfully")
-            print("##########################################")
-
+            #print("#########################################")
             # Apply the transformations
             apply_changes()
             # Adjust times in the XML
@@ -58,7 +58,7 @@ def main():
             update_providers()
             # Remove specific lines
             remove_specific_lines()
-            print('**************FINISHED******************')
+            print('**********FINISHED****************')
             sys.stdout.flush()
         else:
             print("Failed to download /poland1.xml. Status code: {}".format(response.status_code))
@@ -104,11 +104,10 @@ def remove_duplicates():
 def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
-    print("poland1.xml file successfully created")
-    print("######################################################")
-    print(            "The time is set to +0200"                  )
-    print("######################################################")
-
+    #print("poland1.xml file successfully created")
+    print("########################################")
+    print(        "The time is set to +0200"        )
+    print("########################################")
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
@@ -139,5 +138,4 @@ def change(list_changes):
 
 if __name__ == '__main__':
     main()
-
     sys.stdout.flush()

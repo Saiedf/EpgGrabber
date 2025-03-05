@@ -31,7 +31,7 @@ List_Chang = [
     # Add your specific changes here
 ]
 def main():
-    print("*****************Saudiarabia4_iet5 EPG******************")
+    print("************Saudiarabia4_iet5_EPG***************")
     sys.stdout.flush()
     print("Downloading Saudiarabia1_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
@@ -39,12 +39,13 @@ def main():
         # Download the XML file
         response = requests.get('https://www.open-epg.com/files/saudiarabia4.xml', verify=False)
         if response.status_code == 200:
+            # Convert content to unicode using utf-8 encoding
+            data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(response.text)
-            print("##########################################")
-            print("Saudiarabia4.xml Downloaded Successfully")
-            print("##########################################")
-
+            print("########################################")
+            print("saudiarabia4.xml Downloaded Successfully")
+            #print("#########################################")
             # Apply the transformations
             apply_changes()
             # Adjust times in the XML
@@ -57,7 +58,7 @@ def main():
             update_providers()
             # Remove specific lines
             remove_specific_lines()
-            print('**************FINISHED******************')
+            print('**********FINISHED****************')
             sys.stdout.flush()
         else:
             print("Failed to download /saudiarabia4.xml. Status code: {}".format(response.status_code))
@@ -103,10 +104,10 @@ def remove_duplicates():
 def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
-    print("saudiarabia4.xml file successfully created")
-    print("######################################################")
-    print(            "The time is set to +0200"                  )
-    print("######################################################")
+    #print("saudiarabia4.xml file successfully created")
+    print("########################################")
+    print(        "The time is set to +0200"        )
+    print("########################################")
 
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
