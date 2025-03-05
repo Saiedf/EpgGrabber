@@ -33,7 +33,7 @@ List_Chang = [
 def main():
     print("************Saudiarabia4_iet5_EPG***************")
     sys.stdout.flush()
-    print("Downloading Saudiarabia1_iet5 EPG guide\nPlease wait....")
+    print("Downloading Saudiarabia4_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file

@@ -104,11 +104,10 @@ def remove_duplicates():
 def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
-    print("saudiarabia2.xml file successfully created")
+    #print("saudiarabia2.xml file successfully created")
     print("########################################")
     print(        "The time is set to +0200"        )
     print("########################################")
-
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
@@ -139,4 +138,4 @@ def change(list_changes):
 
 if __name__ == "__main__":
     main()
-    sys.stdout.flush()
+sys.stdout.flush()

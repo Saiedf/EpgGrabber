@@ -108,7 +108,6 @@ def rename_file():
     print("########################################")
     print(        "The time is set to +0200"        )
     print("########################################")
-
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
