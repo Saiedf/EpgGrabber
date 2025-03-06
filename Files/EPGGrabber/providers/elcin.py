@@ -29,9 +29,9 @@ def fetch_channels():
     try:
         response = requests.get(url, headers=headers, verify=False)
         response.raise_for_status()
-        channels = re.findall(r'<a title="(.*?)" href="/en/tvguide/(\d+)/">', response.text)
-        unique_channels = set(["{}-{}".format(channel_id, channel_name) for channel_name, channel_id in channels])
-        return sorted(unique_channels)
+        channels = set(re.findall(r'<a title="(.*?)" href="/en/tvguide/(\d+)/">', response.text))
+        sorted_channels = sorted(["{}-{}".format(channel_id, channel_name) for channel_name, channel_id in channels], key=lambda x: x.split("-", 1)[1].casefold())
+        return sorted_channels
     except requests.RequestException as e:
         print("Error fetching channels:", e)
         return []
@@ -146,7 +146,7 @@ class Elcinema:
                 str(next_elem), '%Y-%m-%d %H:%M:%S').strftime('%Y%m%d%H%M%S')
             ch += 2 * ' ' + '<programme start="' + startime + ' ' + time_zone + '" stop="' + \
                 endtime + ' ' + time_zone + '" channel="' + \
-                channel.split('-')[1] + '">\n'
+                '-'.join(channel.split('-')[1:]) + '">\n'
             ch += 4 * ' ' + '<title lang="ar">' + \
                 title.replace('&#39;', "'").replace(
                     '&quot;', '"').replace('&amp;', 'and') + '</title>\n'
@@ -154,7 +154,7 @@ class Elcinema:
                 '&amp;', 'and').replace('(', '').replace(')', '').strip() + '</desc>\n  </programme>\r'
             with io.open(os.path.join(output_dir, "elcinema.xml"), "a", encoding='UTF-8') as f:
                 f.write(ch)
-        print(channel.split('-')[1] +
+        print('-'.join(channel.split('-')[1:]) +
               ' epg ends at : ' + str(self.Endtime()[-1]))
         sys.stdout.flush()
 
