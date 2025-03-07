@@ -30,12 +30,13 @@ def fetch_channels():
         response = requests.get(url, headers=headers, verify=False)
         response.raise_for_status()
         channels = set(re.findall(r'<a title="(.*?)" href="/en/tvguide/(\d+)/">', response.text))
-        sorted_channels = sorted(["{}-{}".format(channel_id, channel_name) for channel_name, channel_id in channels], key=lambda x: x.split("-", 1)[1].casefold())
+        # Fixed sorting using lower() for Python 2.7 compatibility
+        sorted_channels = sorted(["{}-{}".format(channel_id, channel_name) for channel_name, channel_id in channels], 
+                               key=lambda x: x.split("-", 1)[1].lower())
         return sorted_channels
     except requests.RequestException as e:
         print("Error fetching channels:", e)
         return []
-        
 nb_channel = fetch_channels()
 if not nb_channel:
     print("No channels found, cannot proceed.")
@@ -158,7 +159,6 @@ class Elcinema:
               ' epg ends at : ' + str(self.Endtime()[-1]))
         sys.stdout.flush()
 
-
 def main():
     from datetime import datetime
     import json
@@ -177,21 +177,15 @@ def main():
     print("=================================================")
     channels = [ch.split('-')[1] for ch in nb_channel]
     xml_header(os.path.join("/etc/epgimport/ziko_epg", "elcinema.xml"), channels)
-    import time
-    Hour = time.strftime("%H:%M")
-    start = '00:00'
-    end = '02:00'
-    if start <= Hour < end:
-        print('Please come back at 2am to download the EPG')
-        sys.stdout.flush()
-    else:
-        for nb in nb_channel:
-            try:
-                Elcinema(nb)
-            except IndexError:
-                cprint('No epg found or missing data for: ' + nb.split('-')[1])
-                sys.stdout.flush()
-                continue
+    
+    # Direct processing without time check
+    for nb in nb_channel:
+        try:
+            Elcinema(nb)
+        except IndexError:
+            cprint('No epg found or missing data for: ' + nb.split('-')[1])
+            sys.stdout.flush()
+            continue
 
 if __name__ == '__main__':
     main()

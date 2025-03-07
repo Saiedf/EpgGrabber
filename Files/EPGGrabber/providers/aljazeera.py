@@ -94,7 +94,6 @@ def to_xml(data, filename, channel_name, target_date):
     else:
         print("No data found for {} on {}".format(channel_name, target_date))
         sys.stdout.flush()
-
 # دالة لجلب الجدول الزمني للقناة
 def fetch_schedule(url, filename, channel_name):
     try:
