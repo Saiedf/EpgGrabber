@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 import warnings
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import fileinput
+from time import sleep  # Import the sleep function
 
 # Ignore insecure request warnings
 warnings.filterwarnings('ignore', category=InsecureRequestWarning)
@@ -30,9 +31,26 @@ List_Chang = [
     # Example: ('old_text', 'new_text'),
     # Add your specific changes here
 ]
+
 def main():
-    print("************Qatar1_iet5_EPG***************")
-    sys.stdout.flush()
+    # Added code snippet
+    print("**************Qatar1_iet5_EPG****************")
+    sys.stdout.flush()  # Flush after the initial print
+    sleep(1)  # Add a 1-second delay
+    print("=============================================")
+
+    # Fetch the number of channels (replace this with your actual logic)
+    with io.open(input_path, 'r', encoding="utf-8") as f:
+        xml_data = f.read()
+        channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
+
+    print("There are {0} channels available for EPG data.".format(channel_count))
+    print("=============================================")
+    sys.stdout.flush()  # Flush after printing the channel count
+    sleep(1)  # Add a 1-second delay
+
+    #print("****************Qatar1_iet5_EPG*******************")
+    #sys.stdout.flush()
     print("Downloading Qatar1_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
@@ -42,10 +60,10 @@ def main():
             # Convert content to unicode using utf-8 encoding
             data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
             with io.open(input_path, 'w', encoding="utf-8") as f:
-                f.write(response.text)
-            print("########################################")
-            print("qatar1.xml Downloaded Successfully")
-            #print("#########################################")
+                f.write(data_unicode)  # write the unicode data
+            print("============================================")
+            print("Qatar1.xml Downloaded Successfully")
+            #print("=============================================")
             # Apply the transformations
             apply_changes()
             # Adjust times in the XML
@@ -58,7 +76,7 @@ def main():
             update_providers()
             # Remove specific lines
             remove_specific_lines()
-            print('**********FINISHED****************')
+            print('*****************FINISHED*******************')
             sys.stdout.flush()
         else:
             print("Failed to download /qatar1.xml. Status code: {}".format(response.status_code))
@@ -104,10 +122,11 @@ def remove_duplicates():
 def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
-    #print("Qatar1.xml file successfully created")
-    print("########################################")
+    #print("qatar1.xml file successfully created")
+    print("============================================")
     print(        "The time is set to +0200"        )
-    print("########################################")
+    print("============================================")
+
 def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
@@ -137,5 +156,5 @@ def change(list_changes):
         change_data_list(change_expr[0], change_expr[1], input_path)
 
 if __name__ == "__main__":
-        main()
-        sys.stdout.flush()
+    main() 
+    sys.stdout.flush()
