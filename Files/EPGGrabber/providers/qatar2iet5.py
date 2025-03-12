@@ -39,18 +39,6 @@ def main():
     sleep(1)  # Add a 1-second delay
     print("=============================================")
 
-    # Fetch the number of channels (replace this with your actual logic)
-    with io.open(input_path, 'r', encoding="utf-8") as f:
-        xml_data = f.read()
-        channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
-
-    print("There are {0} channels available for EPG data.".format(channel_count))
-    print("=============================================")
-    sys.stdout.flush()  # Flush after printing the channel count
-    sleep(1)  # Add a 1-second delay
-
-    #print("****************Qatar2_iet5_EPG*******************")
-    #sys.stdout.flush()
     print("Downloading Qatar2_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
@@ -63,7 +51,16 @@ def main():
                 f.write(data_unicode)  # write the unicode data
             print("============================================")
             print("Qatar2.xml Downloaded Successfully")
-            #print("=============================================")
+            # Fetch the number of channels (replace this with your actual logic)
+            with io.open(input_path, 'r', encoding="utf-8") as f:
+                xml_data = f.read()
+                print("============================================")
+                channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
+
+            print("There are {0} channels available for EPG data.".format(channel_count))
+            print("============================================")
+            sys.stdout.flush()  # Flush after printing the channel count
+            sleep(1)  # Add a 1-second delay
             # Apply the transformations
             apply_changes()
             # Adjust times in the XML
@@ -80,8 +77,10 @@ def main():
             sys.stdout.flush()
         else:
             print("Failed to download /Qatar2.xml. Status code: {}".format(response.status_code))
-    except requests.exceptions.RequestException as e:
+            sys.exit(1)  # Exit if download fails
+    except requests.exceptions.RequestException as e:  # Corrected exception syntax
         print("Failed to download /Qatar2.xml: {}".format(e))
+        sys.exit(1)  # Exit if an exception occurs during download
 
 def apply_changes():
     for old_text, new_text in List_Chang:
@@ -122,9 +121,8 @@ def remove_duplicates():
 def rename_file():
     os.remove(input_path)
     os.rename(output_path, input_path)
-    #print("qatar2.xml file successfully created")
     print("============================================")
-    print(        "The time is set to +0200"        )
+    print("The time is set to +0200")
     print("============================================")
 
 def update_providers():
@@ -156,5 +154,5 @@ def change(list_changes):
         change_data_list(change_expr[0], change_expr[1], input_path)
 
 if __name__ == "__main__":
-    main() 
+    main()
     sys.stdout.flush()
