@@ -23,7 +23,7 @@ except ImportError:
     from __init__ import EPG_ROOT, PROVIDERS_ROOT
 
 # Paths
-input_path = os.path.join(EPG_ROOT, 'uae3.xml')
+input_path = os.path.join(EPG_ROOT, 'uae5.xml')
 output_path = os.path.join(EPG_ROOT, 'out.xml')
 
 # List of changes to apply
@@ -34,16 +34,16 @@ List_Chang = [
 
 def main():
     # Added code snippet
-    print("**************UAE3_iet5_EPG****************")
+    print("**************UAE5_iet5_EPG****************")
     sys.stdout.flush()  # Flush after the initial print
     sleep(1)  # Add a 1-second delay
     print("=============================================")
 
-    print("Downloading UAE3_iet5 EPG guide\nPlease wait....")
+    print("Downloading UAE5_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file
-        response = requests.get('https://www.open-epg.com/files/uae3.xml', verify=False)
+        response = requests.get('https://www.open-epg.com/files/uae5.xml', verify=False)
         if response.status_code == 200:
             # Convert content to unicode using utf-8 encoding
             data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
@@ -60,7 +60,7 @@ def main():
 
             print("There are {0} channels available for EPG data.".format(channel_count))
             print("============================================")
-            print("UAE3.xml Downloaded Successfully")
+            print("UAE5.xml Downloaded Successfully")
             sys.stdout.flush()  # Flush after printing the channel count
             sleep(1)  # Add a 1-second delay
             # Apply the transformations
@@ -78,10 +78,10 @@ def main():
             print('*****************FINISHED*******************')
             sys.stdout.flush()
         else:
-            print("Failed to download /uae3.xml. Status code: {}".format(response.status_code))
+            print("Failed to download /uae5.xml. Status code: {}".format(response.status_code))
             sys.exit(1)  # Exit if download fails
     except requests.exceptions.RequestException as e:  # Corrected exception syntax
-        print("Failed to download /uae3.xml: {}".format(e))
+        print("Failed to download /uae5.xml: {}".format(e))
         sys.exit(1)  # Exit if an exception occurs during download
 
 def apply_changes():
@@ -131,7 +131,7 @@ def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
         for channel in data['bouquets']:
-            if channel["bouquet"] == "uae3iet5":
+            if channel["bouquet"] == "uae5iet5":
                 channel['date'] = datetime.today().strftime('%A %d %B %Y at %I:%M %p')
     with open(PROVIDERS_ROOT, 'w') as f:
         json.dump(data, f, indent=4)

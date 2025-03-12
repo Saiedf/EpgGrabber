@@ -34,7 +34,7 @@ List_Chang = [
 
 def main():
     # Added code snippet
-    print("***************UAE1_iet5_EPG*****************")
+    print("**************UAE1_iet5_EPG****************")
     sys.stdout.flush()  # Flush after the initial print
     sleep(1)  # Add a 1-second delay
     print("=============================================")
@@ -49,16 +49,18 @@ def main():
             data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(data_unicode)  # write the unicode data
-            print("============================================")
-            print("uae1.xml Downloaded Successfully")
+                print("============================================")
+
             # Fetch the number of channels (replace this with your actual logic)
             with io.open(input_path, 'r', encoding="utf-8") as f:
                 xml_data = f.read()
-                print("============================================")
-                channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
+
+            # Count the number of channels
+            channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
 
             print("There are {0} channels available for EPG data.".format(channel_count))
             print("============================================")
+            print("UAE1.xml Downloaded Successfully")
             sys.stdout.flush()  # Flush after printing the channel count
             sleep(1)  # Add a 1-second delay
             # Apply the transformations

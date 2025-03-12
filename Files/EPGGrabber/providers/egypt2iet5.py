@@ -49,16 +49,18 @@ def main():
             data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(data_unicode)  # write the unicode data
-            print("============================================")
-            print("Egypt2.xml Downloaded Successfully")
+                print("============================================")
+
             # Fetch the number of channels (replace this with your actual logic)
             with io.open(input_path, 'r', encoding="utf-8") as f:
                 xml_data = f.read()
-                print("============================================")
-                channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
+
+            # Count the number of channels
+            channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
 
             print("There are {0} channels available for EPG data.".format(channel_count))
             print("============================================")
+            print("Egypt2.xml Downloaded Successfully")
             sys.stdout.flush()  # Flush after printing the channel count
             sleep(1)  # Add a 1-second delay
             # Apply the transformations
@@ -76,7 +78,7 @@ def main():
             print('*****************FINISHED*******************')
             sys.stdout.flush()
         else:
-            print("Failed to download /egypt2.xml. Status code: {}".format(response.status_code))
+            print("Failed to download /Egypt2.xml. Status code: {}".format(response.status_code))
             sys.exit(1)  # Exit if download fails
     except requests.exceptions.RequestException as e:  # Corrected exception syntax
         print("Failed to download /egypt2.xml: {}".format(e))

@@ -34,7 +34,7 @@ List_Chang = [
 
 def main():
     # Added code snippet
-    print("********Saudiarabia1_iet5_EPG**********")
+    print("**************Saudiarabia1_iet5_EPG****************")
     sys.stdout.flush()  # Flush after the initial print
     sleep(1)  # Add a 1-second delay
     print("=============================================")
@@ -49,16 +49,18 @@ def main():
             data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
             with io.open(input_path, 'w', encoding="utf-8") as f:
                 f.write(data_unicode)  # write the unicode data
-            print("============================================")
-            print("saudiarabia1.xml Downloaded Successfully")
+                print("============================================")
+
             # Fetch the number of channels (replace this with your actual logic)
             with io.open(input_path, 'r', encoding="utf-8") as f:
                 xml_data = f.read()
-                print("============================================")
-                channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
+
+            # Count the number of channels
+            channel_count = xml_data.count('<channel id="')  # Example: Count channels in XML
 
             print("There are {0} channels available for EPG data.".format(channel_count))
             print("============================================")
+            print("Saudiarabia1.xml Downloaded Successfully")
             sys.stdout.flush()  # Flush after printing the channel count
             sleep(1)  # Add a 1-second delay
             # Apply the transformations
@@ -76,10 +78,10 @@ def main():
             print('*****************FINISHED*******************')
             sys.stdout.flush()
         else:
-            print("Failed to download /saudiarabia1.xml. Status code: {}".format(response.status_code))
+            print("Failed to download /Saudiarabia1.xml. Status code: {}".format(response.status_code))
             sys.exit(1)  # Exit if download fails
     except requests.exceptions.RequestException as e:  # Corrected exception syntax
-        print("Failed to download /saudiarabia1.xml: {}".format(e))
+        print("Failed to download /Saudiarabia1.xml: {}".format(e))
         sys.exit(1)  # Exit if an exception occurs during download
 
 def apply_changes():
