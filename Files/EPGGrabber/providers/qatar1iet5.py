@@ -23,7 +23,7 @@ except ImportError:
     from __init__ import EPG_ROOT, PROVIDERS_ROOT
 
 # Paths
-input_path = os.path.join(EPG_ROOT, 'qatar2.xml')
+input_path = os.path.join(EPG_ROOT, 'qatar1.xml')
 output_path = os.path.join(EPG_ROOT, 'out.xml')
 
 # List of changes to apply
@@ -34,16 +34,16 @@ List_Chang = [
 
 def main():
     # Added code snippet
-    print("**************Qatar2_iet5_EPG****************")
+    print("**************Qatar1_iet5_EPG****************")
     sys.stdout.flush()  # Flush after the initial print
     sleep(1)  # Add a 1-second delay
     print("=============================================")
 
-    print("Downloading Qatar2_iet5 EPG guide\nPlease wait....")
+    print("Downloading Qatar1_iet5 EPG guide\nPlease wait....")
     sys.stdout.flush()
     try:
         # Download the XML file
-        response = requests.get('https://www.open-epg.com/files/qatar2.xml', verify=False)
+        response = requests.get('https://www.open-epg.com/files/qatar1.xml', verify=False)
         if response.status_code == 200:
             # Convert content to unicode using utf-8 encoding
             data_unicode = response.content.decode('utf-8')  # use content and decode to utf-8
@@ -60,7 +60,7 @@ def main():
 
             print("There are {0} channels available for EPG data.".format(channel_count))
             print("============================================")
-            print("Qatar2.xml Downloaded Successfully")
+            print("Qatar1.xml Downloaded Successfully")
             sys.stdout.flush()  # Flush after printing the channel count
             sleep(1)  # Add a 1-second delay
             # Apply the transformations
@@ -78,10 +78,10 @@ def main():
             print('*****************FINISHED*******************')
             sys.stdout.flush()
         else:
-            print("Failed to download /Qatar2.xml. Status code: {}".format(response.status_code))
+            print("Failed to download /Qatar1.xml. Status code: {}".format(response.status_code))
             sys.exit(1)  # Exit if download fails
     except requests.exceptions.RequestException as e:  # Corrected exception syntax
-        print("Failed to download /Qatar2.xml: {}".format(e))
+        print("Failed to download /Qatar1.xml: {}".format(e))
         sys.exit(1)  # Exit if an exception occurs during download
 
 def apply_changes():
@@ -131,7 +131,7 @@ def update_providers():
     with open(PROVIDERS_ROOT, 'r') as f:
         data = json.load(f)
         for channel in data['bouquets']:
-            if channel["bouquet"] == "qatar2iet5":
+            if channel["bouquet"] == "qatar1iet5":
                 channel['date'] = datetime.today().strftime('%A %d %B %Y at %I:%M %p')
     with open(PROVIDERS_ROOT, 'w') as f:
         json.dump(data, f, indent=4)
