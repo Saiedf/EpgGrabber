@@ -16,7 +16,11 @@ from datetime import datetime, timedelta
 from time import sleep, strftime
 from requests.adapters import HTTPAdapter
 import warnings
+
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
+
+# Define the output directory
+output_dir = "/etc/epgimport/ziko_epg"
 
 headers = {
     'Host': 'elcinema.com',
@@ -46,6 +50,7 @@ time_zone = tz()
 
 REDC = '\033[31m'
 ENDC = '\033[m'
+
 
 def cprint(text):
     print(REDC + text + ENDC)
@@ -89,6 +94,7 @@ class Elcinema:
                 today += timedelta(days=1)
             last_hr = h
             self.prog_start.append(today + timedelta(hours=h, minutes=m))
+
         return self.prog_start
 
     def Endtime(self):
@@ -101,6 +107,7 @@ class Elcinema:
             x = start + timedelta(minutes=m)
             start += timedelta(minutes=m)
             self.prog_end.append(x)
+
         return self.prog_end
 
     def GetDes(self):
@@ -131,11 +138,11 @@ class Elcinema:
                     self.GetDes().insert(index, "Unable to retrieve program information")
                 else:
                     self.GetDes().insert(index, "Unable to retrieve program information".decode('utf-8'))
+
         return self.titles
 
     def Toxml(self, channel):
-        # Define the output directory
-        output_dir = "/etc/epgimport/ziko_epg"
+
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)  # Create the directory if it doesn't exist
 
@@ -189,5 +196,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-    print('**************FINISHED******************')
-    sys.stdout.flush()
+    close_xml(os.path.join(output_dir, "elcinema.xml"))
+
+print('**************FINISHED******************')
+sys.stdout.flush()
