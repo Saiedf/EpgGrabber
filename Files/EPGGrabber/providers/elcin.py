@@ -12,6 +12,7 @@ import io
 import sys
 import os
 import ssl
+import time
 from datetime import datetime, timedelta
 from time import sleep, strftime
 from requests.adapters import HTTPAdapter
@@ -46,7 +47,15 @@ if not nb_channel:
     print("No channels found, cannot proceed.")
     sys.exit(1)
 
-time_zone = tz()
+# Function to get current UTC offset from receiver's local time
+def get_local_offset():
+    is_dst = time.localtime().tm_isdst
+    utc_offset_sec = - (time.altzone if is_dst else time.timezone)
+    hours = utc_offset_sec // 3600
+    minutes = (utc_offset_sec % 3600) // 60
+    return "{0:+03d}{1:02d}".format(hours, minutes)
+
+time_zone = get_local_offset()
 
 REDC = '\033[31m'
 ENDC = '\033[m'
@@ -179,6 +188,11 @@ def main():
 
     print('**************ELCINEMA EPG******************')
     sys.stdout.flush()
+
+    print("============================================")
+    print("Time_zone is set to {}".format(time_zone))
+    print("============================================")
+
     print("=================================================")
     print("There are {} channels available for EPG data.".format(len(nb_channel)))
     print("=================================================")
