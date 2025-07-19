@@ -22,6 +22,7 @@ utc_offset_seconds = - (time.altzone if is_dst else time.timezone)
 offset_hours = utc_offset_seconds // 3600
 offset_minutes = (abs(utc_offset_seconds) % 3600) // 60
 time_zone = "{0:+03d}{1:02d}".format(offset_hours, offset_minutes)
+
 # Ignore insecure request warnings
 warnings.filterwarnings('ignore', category=InsecureRequestWarning)
 
