@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+# This script created by iet5
+#
 import os
 import io
 import re
@@ -14,6 +15,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import fileinput
 from time import sleep  # Import the sleep function
 
+# Timezone initialization
 # Calculate timezone offset using receiver's local time (Python 2.7 compatible)
 is_dst = time.localtime().tm_isdst > 0
 utc_offset_seconds = - (time.altzone if is_dst else time.timezone)
