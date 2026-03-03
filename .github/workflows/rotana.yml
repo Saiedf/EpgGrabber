@@ -11,19 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - run: pip install cloudscraper beautifulsoup4
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install cloudscraper beautifulsoup4
 
-      - run: python generate_rotana.py
+      - name: Generate rotana.xml
+        run: |
+          python generate_rotana.py
 
-      - run: |
+      - name: Commit and push changes
+        run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          git pull --rebase origin main
           git add Files/rotana.xml
-          git commit -m "Update rotana.xml" || echo "No changes"
-          git push
+          git commit -m "Update rotana.xml" || echo "No changes to commit"
+          git push origin main
