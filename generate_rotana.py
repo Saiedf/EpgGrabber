@@ -39,7 +39,7 @@ def fetch_channel_html(scraper, ch_id, retries=3):
 
 def parse_programs(html):
     soup = BeautifulSoup(html, "html.parser")
-    programs = soup.select(".epg h5")
+    programs = soup.find_all("h5")
     result = []
 
     if not programs:
