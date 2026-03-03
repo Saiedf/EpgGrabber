@@ -1,1 +1,39 @@
+name: Generate Rotana EPG
 
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install cloudscraper beautifulsoup4
+
+      - name: Generate rotana.xml
+        run: |
+          python generate_rotana.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add Files/rotana.xml
+          git commit -m "Update rotana.xml" || echo "No changes"
+          git push
