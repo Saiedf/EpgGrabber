@@ -1,125 +1,106 @@
 # -*- coding: utf-8 -*-
-
-import os
-import time
-import cloudscraper
+import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import xml.etree.ElementTree as ET
 
-CHANNELS = {
-    "431": "Rotana Cinema KSA",
-    "439": "Rotana Cinema Masr",
-    "437": "Rotana Comedy",
-    "438": "Rotana Classic",
-    "436": "Rotana Drama",
-    "435": "Rotana Khalijea HD",
-    "434": "LBC",
-    "443": "Rotana Clip",
-    "446": "Al Resalah"
+channels = [
+    ("431", "Rotana Cinema KSA"),
+    ("439", "Rotana Cinema Masr"),
+    ("437", "Rotana Comedy"),
+    ("438", "Rotana Classic"),
+    ("436", "Rotana Drama"),
+    ("435", "Rotana Khalijea HD"),
+    ("434", "LBC"),
+    ("443", "Rotana Clip"),
+    ("446", "Al Resalah"),
+]
+
+headers = {
+    "User-Agent": "Mozilla/5.0"
 }
 
-TZ = "-120"          # نفس اللي ظهر عندك في XHR
-XML_TZ = "+0100"     # مثل سكربتك القديم
-OUT_PATH = os.path.join("Files", "rotana.xml")
+def fetch_channel(channel_id):
+    url = "https://rotana.net/ar/streams?channel={}&tz=-120".format(channel_id)
+    try:
+        r = requests.get(url, headers=headers, timeout=10)
+        if r.status_code != 200:
+            return []
 
-def fetch_channel_html(scraper, ch_id, retries=3):
-    url = f"https://rotana.net/ar/streams?channel={ch_id}&tz={TZ}"
-    last_err = None
-    for _ in range(retries):
-        try:
-            r = scraper.get(url, timeout=30)
-            if r.status_code == 200:
-                return r.text
-            last_err = f"HTTP {r.status_code}"
-        except Exception as e:
-            last_err = str(e)
-        time.sleep(2)
-    raise RuntimeError(f"Failed to fetch channel {ch_id}: {last_err}")
+        soup = BeautifulSoup(r.text, "html.parser")
+        programs = soup.find_all("h5")
+        epg = []
+        current_date = datetime.today()
+        previous_time = None
 
-def parse_programs(html):
-    soup = BeautifulSoup(html, "html.parser")
-    programs = soup.find_all("h5")
-    result = []
+        for i, p in enumerate(programs):
+            spans = p.find_all("span")
+            if len(spans) < 2:
+                continue
 
-    if not programs:
-        return result
+            time_str = spans[0].get_text(strip=True)
+            title = spans[1].get_text(strip=True)
 
-    current_date = datetime.today()
-    prev_time = None
+            prog_time = datetime.strptime(time_str, "%H:%M").time()
 
-    for i, p in enumerate(programs):
-        spans = p.find_all("span")
-        if len(spans) < 2:
-            continue
+            if previous_time and prog_time < previous_time:
+                current_date += timedelta(days=1)
 
-        time_str = spans[0].get_text(strip=True)  # HH:MM
-        title = spans[1].get_text(strip=True)
+            start_dt = datetime.combine(current_date, prog_time)
 
-        prog_time = datetime.strptime(time_str, "%H:%M").time()
-        if prev_time and prog_time < prev_time:
-            current_date += timedelta(days=1)
-
-        start = datetime.combine(current_date, prog_time)
-
-        if i < len(programs) - 1:
-            ns = programs[i + 1].find_all("span")
-            if ns:
-                next_time = datetime.strptime(ns[0].get_text(strip=True), "%H:%M").time()
-                if next_time < prog_time:
-                    stop = datetime.combine(current_date + timedelta(days=1), next_time)
+            if i < len(programs) - 1:
+                next_spans = programs[i + 1].find_all("span")
+                if next_spans:
+                    next_time = datetime.strptime(
+                        next_spans[0].get_text(strip=True), "%H:%M"
+                    ).time()
+                    if next_time < prog_time:
+                        stop_dt = datetime.combine(current_date + timedelta(days=1), next_time)
+                    else:
+                        stop_dt = datetime.combine(current_date, next_time)
                 else:
-                    stop = datetime.combine(current_date, next_time)
+                    stop_dt = start_dt + timedelta(hours=2)
             else:
-                stop = start + timedelta(hours=1)
-        else:
-            stop = start + timedelta(hours=1)
+                stop_dt = start_dt + timedelta(hours=2)
 
-        result.append((start, stop, title))
-        prev_time = prog_time
+            epg.append((start_dt, stop_dt, title))
+            previous_time = prog_time
 
-    return result
+        return epg
 
-def build_xml(all_data):
-    tv = ET.Element("tv", attrib={"generator-info-name": "Rotana EPG (GitHub Actions)"})
+    except:
+        return []
 
-    # channels section
-    for ch_id, ch_name in CHANNELS.items():
-        ch = ET.SubElement(tv, "channel", attrib={"id": ch_id})
-        dn = ET.SubElement(ch, "display-name", attrib={"lang": "ar"})
+def main():
+    root = ET.Element("tv", attrib={"generator-info-name": "By ZR1"})
+
+    all_data = {}
+
+    # Fetch in fixed order
+    for ch_id, ch_name in channels:
+        all_data[ch_id] = fetch_channel(ch_id)
+
+    # Write channels in fixed order
+    for ch_id, ch_name in channels:
+        ch = ET.SubElement(root, "channel", attrib={"id": ch_name})
+        dn = ET.SubElement(ch, "display-name", attrib={"lang": "en"})
         dn.text = ch_name
 
-    # programmes section
-    for ch_id, items in all_data.items():
-        for start, stop, title in items:
-            pr = ET.SubElement(tv, "programme", attrib={
-                "start": start.strftime(f"%Y%m%d%H%M%S {XML_TZ}"),
-                "stop":  stop.strftime(f"%Y%m%d%H%M%S {XML_TZ}"),
-                "channel": ch_id
+    # Write programmes in fixed order
+    for ch_id, ch_name in channels:
+        for start_dt, stop_dt, title in all_data.get(ch_id, []):
+            pr = ET.SubElement(root, "programme", attrib={
+                "start": start_dt.strftime("%Y%m%d%H%M%S +0200"),
+                "stop": stop_dt.strftime("%Y%m%d%H%M%S +0200"),
+                "channel": ch_name
             })
             t = ET.SubElement(pr, "title", attrib={"lang": "ar"})
             t.text = title
             d = ET.SubElement(pr, "desc", attrib={"lang": "ar"})
-            d.text = "وصف غير متوفر"
+            d.text = "Description not available"
 
-    return ET.ElementTree(tv)
-
-def main():
-    os.makedirs("Files", exist_ok=True)
-
-    scraper = cloudscraper.create_scraper(
-        browser={"browser": "chrome", "platform": "windows", "mobile": False}
-    )
-
-    all_data = {}
-    for ch_id in CHANNELS.keys():
-        html = fetch_channel_html(scraper, ch_id)
-        all_data[ch_id] = parse_programs(html)
-
-    tree = build_xml(all_data)
-    tree.write(OUT_PATH, encoding="utf-8", xml_declaration=True)
-
-    print(f"OK: wrote {OUT_PATH}")
+    tree = ET.ElementTree(root)
+    tree.write("Files/rotana.xml", encoding="utf-8", xml_declaration=True)
 
 if __name__ == "__main__":
     main()
