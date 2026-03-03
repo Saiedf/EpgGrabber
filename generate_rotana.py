@@ -3,6 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import xml.etree.ElementTree as ET
+import urllib.request
+import os
 
 channels = [
     ("431", "Rotana Cinema KSA"),
@@ -16,6 +18,8 @@ channels = [
     ("446", "Al Resalah"),
 ]
 
+GITHUB_BACKUP = "https://raw.githubusercontent.com/Saiedf/EpgGrabber/main/Files/rotana.xml"
+
 headers = {
     "User-Agent": "Mozilla/5.0"
 }
@@ -25,10 +29,14 @@ def fetch_channel(channel_id):
     try:
         r = requests.get(url, headers=headers, timeout=10)
         if r.status_code != 200:
-            return []
+            return None
 
         soup = BeautifulSoup(r.text, "html.parser")
         programs = soup.find_all("h5")
+
+        if not programs:
+            return None
+
         epg = []
         current_date = datetime.today()
         previous_time = None
@@ -69,24 +77,35 @@ def fetch_channel(channel_id):
         return epg
 
     except:
-        return []
+        return None
+
+
+def fallback_from_github():
+    print("Using GitHub backup XML")
+    urllib.request.urlretrieve(GITHUB_BACKUP, "Files/rotana.xml")
+
 
 def main():
     root = ET.Element("tv", attrib={"generator-info-name": "By ZR1"})
-
     all_data = {}
+    failed = False
 
-    # Fetch in fixed order
     for ch_id, ch_name in channels:
-        all_data[ch_id] = fetch_channel(ch_id)
+        data = fetch_channel(ch_id)
+        if data is None:
+            failed = True
+            break
+        all_data[ch_id] = data
 
-    # Write channels in fixed order
+    if failed:
+        fallback_from_github()
+        return
+
     for ch_id, ch_name in channels:
         ch = ET.SubElement(root, "channel", attrib={"id": ch_name})
         dn = ET.SubElement(ch, "display-name", attrib={"lang": "en"})
         dn.text = ch_name
 
-    # Write programmes in fixed order
     for ch_id, ch_name in channels:
         for start_dt, stop_dt, title in all_data.get(ch_id, []):
             pr = ET.SubElement(root, "programme", attrib={
@@ -101,6 +120,7 @@ def main():
 
     tree = ET.ElementTree(root)
     tree.write("Files/rotana.xml", encoding="utf-8", xml_declaration=True)
+
 
 if __name__ == "__main__":
     main()
